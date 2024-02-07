@@ -73,31 +73,31 @@ nginx file configuration:
 
 
 server {
-    listen 80;
-    server_name ec2-13-232-126-77.ap-south-1.compute.amazonaws.com;
-    location /main1 {
-            rewrite ^/main1(.*)$ /$1 break;
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    listen 80; 
+    server_name ec2-13-232-126-77.ap-south-1.compute.amazonaws.com; 
+    location /main1 { 
+            rewrite ^/main1(.*)$ /$1 break; 
+        proxy_pass http://127.0.0.1:5000; 
+        proxy_set_header Host $host; 
+        proxy_set_header X-Real-IP $remote_addr; 
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
+    } 
+    location /main2 { 
+            rewrite ^/main2(.*)$ /$1 break; 
+        proxy_pass http://127.0.0.1:5001; 
+        proxy_set_header Host $host; 
+        proxy_set_header X-Real-IP $remote_addr; 
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for; 
     }
-    location /main2 {
-            rewrite ^/main2(.*)$ /$1 break;
-        proxy_pass http://127.0.0.1:5001;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-    location /static {
-        alias /home/ec2-user/Flask-App2/static;
-    }
-    location /favicon.ico {
-        alias /home/ec2-user/Flask-App2/favicon.ico;
-    }
-error_page 500 502 503 504 /500.html;
-    location = /500.html {
-        root /home/ec2-user/Flask-App2;
-    }
-}
+    location /static { 
+        alias /home/ec2-user/Flask-App2/static; 
+    } 
+    location /favicon.ico { 
+        alias /home/ec2-user/Flask-App2/favicon.ico; 
+    } 
+error_page 500 502 503 504 /500.html; 
+    location = /500.html { 
+        root /home/ec2-user/Flask-App2; 
+    } 
+} 
 
