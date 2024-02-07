@@ -3,6 +3,7 @@ Follow video
 https://www.youtube.com/watch?v=0eMU23VyzR8
 
 python3 -m venv venv
+
 source venv/bin/activate
 
 
